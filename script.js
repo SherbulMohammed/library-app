@@ -7,14 +7,16 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function() {
-        return (title + author + ", " + pages + ", " + read);
-    }
-}
+    // this.info = function() {
+   //     return (title + author + ", " + pages + ", " + read);
+   // }
+   // }
 
-// Adding a new book to the array
+// Adding a new book to the array/library
 
-function addBookToLibrary() {
+function addBookToLibrary(Title, Author, Pages, Read) {
+    let book = new Book(Title, Author, Pages, Read);
+    myLibrary.push(book);
     
 }
 
