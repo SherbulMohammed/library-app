@@ -21,6 +21,12 @@ function removeBookFromLibrary(index) {
     displayBooks();
 }
 
+// Function to toggle a book's read status
+Book.prototype.toggleReadStatus = function() {
+    this.read = this.read === "Read" ? "Not read" : "Read";
+    displayBooks();
+};
+
 
 // Create library array
 const myLibrary = [];
@@ -47,7 +53,7 @@ function displayBooks() {
     bookList.innerHTML = '';
 
     // Loop through the array of books and display books on their own card
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book-card");
         bookCard.innerHTML = `
@@ -55,6 +61,8 @@ function displayBooks() {
             <p><strong>Author:</strong> ${book.Author}</p>
             <p><strong>Pages:</strong> ${book.pages}</p>
             <p><strong>Read:</strong> ${book.read}</p>
+            <button onclick="removeBookFromLibrary(${index})">Remove</button>
+            <button onclick="toggleReadStatus(${index})">Toggle Read Status</button>
         `;
         bookList.appendChild(bookCard); // Append the book card to the bookList element
     });
