@@ -1,3 +1,27 @@
+// Event listener for the "Add a new Book" button
+document.getElementById("newBookbtn").addEventListener("click", function() {
+    document.getElementById("bookForm").style.display = "block"
+});
+
+// Event listener for the form submission
+document.getElementById("addBookForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const read = document.getElementById("read").checked ? "Read" : "Not Read";
+    addBookToLibrary(title, author, pages, read);
+    displayBooks();
+});
+
+// Function to remove a book from the library array
+
+function removeBookFromLibrary(index) {
+    myLibrary.splice(index, 1);
+    displayBooks();
+}
+
+
 // Create library array
 const myLibrary = [];
 
